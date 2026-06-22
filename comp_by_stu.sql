@@ -7,7 +7,8 @@ select
     rbrapbg_pbgp_code as budget_group,
     rbrapbc_pbcp_code as component,
     rbrapbc_amt as amt,
-    'pbb_components_by_stu_' || to_char(sysdate, 'MMDDYYYY_HHMISS') as dt
+    to_char(sysdate, 'MM/DD/YYYY HH:MI:SS') as last_update
+    
 from rbrapbc
 join spriden on spriden_pidm = rbrapbc_pidm and spriden_change_ind is null
 join rorstat on rorstat_pidm = rbrapbc_pidm and rorstat_aidy_code = rbrapbc_aidy_code
@@ -23,3 +24,4 @@ and rbrapbc_aidy_code = '2627';
 
 
 select * from rbrapbg;
+-- 'pbb_components_by_stu_' || to_char(sysdate, 'MMDDYYYY_HHMISS') as dt
